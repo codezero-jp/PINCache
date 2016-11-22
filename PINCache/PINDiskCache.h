@@ -221,7 +221,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @param block A block to be executed concurrently after the containment check happened
  */
-- (void)containsObjectForKey:(NSString *)key block:(PINDiskCacheContainsBlock)block;
+- (void)containsObjectForKey:(nullable NSString *)key block:(PINDiskCacheContainsBlock)block;
 
 /**
  Retrieves the object for the specified key. This method returns immediately and executes the passed
@@ -232,7 +232,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key The key associated with the requested object.
  @param block A block to be executed serially when the object is available.
  */
-- (void)objectForKey:(NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
+- (void)objectForKey:(nullable NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
 
 /**
  Retrieves the fileURL for the specified key without actually reading the data from disk. This method
@@ -254,7 +254,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key A key to associate with the object. This string will be copied.
  @param block A block to be executed serially after the object has been stored, or nil.
  */
-- (void)setObject:(id <NSCoding>)object forKey:(NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
+- (void)setObject:(nullable id <NSCoding>)object forKey:(nullable NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
 
 /**
  Removes the object for the specified key. This method returns immediately and executes the passed block
@@ -263,7 +263,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key The key associated with the object to be removed.
  @param block A block to be executed serially after the object has been removed, or nil.
  */
-- (void)removeObjectForKey:(NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
+- (void)removeObjectForKey:(nullable NSString *)key block:(nullable PINDiskCacheObjectBlock)block;
 
 /**
  Removes all objects from the cache that have not been used since the specified date.
@@ -331,7 +331,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @result YES if an object is present for the given key in the cache, otherwise NO.
  */
-- (BOOL)containsObjectForKey:(NSString *)key;
+- (BOOL)containsObjectForKey:(nullable NSString *)key;
 
 /**
  Retrieves the object for the specified key. This method blocks the calling thread until the
@@ -341,7 +341,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @result The object for the specified key.
  */
-- (__nullable id <NSCoding>)objectForKey:(NSString *)key;
+- (__nullable id <NSCoding>)objectForKey:(nullable NSString *)key;
 
 /**
  Retrieves the file URL for the specified key. This method blocks the calling thread until the
@@ -362,7 +362,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  @param object An object to store in the cache.
  @param key A key to associate with the object. This string will be copied.
  */
-- (void)setObject:(id <NSCoding>)object forKey:(NSString *)key;
+- (void)setObject:(nullable id <NSCoding>)object forKey:(nullable NSString *)key;
 
 /**
  Removes the object for the specified key. This method blocks the calling thread until the object
@@ -370,7 +370,7 @@ typedef void (^PINDiskCacheContainsBlock)(BOOL containsObject);
  
  @param key The key associated with the object to be removed.
  */
-- (void)removeObjectForKey:(NSString *)key;
+- (void)removeObjectForKey:(nullable NSString *)key;
 
 /**
  Removes all objects from the cache that have not been used since the specified date.

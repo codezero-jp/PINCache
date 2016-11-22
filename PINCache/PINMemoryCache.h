@@ -173,7 +173,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @param block A block to be executed concurrently after the containment check happened
  */
-- (void)containsObjectForKey:(NSString *)key block:(PINMemoryCacheContainmentBlock)block;
+- (void)containsObjectForKey:(nullable NSString *)key block:(PINMemoryCacheContainmentBlock)block;
 
 /**
  Retrieves the object for the specified key. This method returns immediately and executes the passed
@@ -182,7 +182,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param key The key associated with the requested object.
  @param block A block to be executed concurrently when the object is available.
  */
-- (void)objectForKey:(NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
+- (void)objectForKey:(nullable NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
 
 /**
  Stores an object in the cache for the specified key. This method returns immediately and executes the
@@ -192,7 +192,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param key A key to associate with the object. This string will be copied.
  @param block A block to be executed concurrently after the object has been stored, or nil.
  */
-- (void)setObject:(id)object forKey:(NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
+- (void)setObject:(nullable id)object forKey:(nullable NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
 
 /**
  Stores an object in the cache for the specified key and the specified cost. If the cost causes the total
@@ -205,7 +205,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param cost An amount to add to the <totalCost>.
  @param block A block to be executed concurrently after the object has been stored, or nil.
  */
-- (void)setObject:(id)object forKey:(NSString *)key withCost:(NSUInteger)cost block:(nullable PINMemoryCacheObjectBlock)block;
+- (void)setObject:(nullable id)object forKey:(nullable NSString *)key withCost:(NSUInteger)cost block:(nullable PINMemoryCacheObjectBlock)block;
 
 /**
  Removes the object for the specified key. This method returns immediately and executes the passed
@@ -214,7 +214,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object to be removed.
  @param block A block to be executed concurrently after the object has been removed, or nil.
  */
-- (void)removeObjectForKey:(NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
+- (void)removeObjectForKey:(nullable NSString *)key block:(nullable PINMemoryCacheObjectBlock)block;
 
 /**
  Removes all objects from the cache that have not been used since the specified date.
@@ -273,7 +273,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @result YES if an object is present for the given key in the cache, otherwise NO.
  */
-- (BOOL)containsObjectForKey:(NSString *)key;
+- (BOOL)containsObjectForKey:(nullable NSString *)key;
 
 /**
  Retrieves the object for the specified key. This method blocks the calling thread until the
@@ -293,7 +293,7 @@ typedef void (^PINMemoryCacheContainmentBlock)(BOOL containsObject);
  @param object An object to store in the cache.
  @param key A key to associate with the object. This string will be copied.
  */
-- (void)setObject:(id)object forKey:(NSString *)key;
+- (void)setObject:(nullable id)object forKey:(nullable NSString *)key;
 
 /**
  Stores an object in the cache for the specified key and the specified cost. If the cost causes the total

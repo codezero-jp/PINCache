@@ -119,7 +119,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @param block A block to be executed concurrently after the containment check happened
  */
-- (void)containsObjectForKey:(NSString *)key block:(PINCacheObjectContainmentBlock)block;
+- (void)containsObjectForKey:(nullable NSString *)key block:(nullable PINCacheObjectContainmentBlock)block;
 
 /**
  Retrieves the object for the specified key. This method returns immediately and executes the passed
@@ -128,7 +128,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key The key associated with the requested object.
  @param block A block to be executed concurrently when the object is available.
  */
-- (void)objectForKey:(NSString *)key block:(PINCacheObjectBlock)block;
+- (void)objectForKey:(nullable NSString *)key block:(nullable PINCacheObjectBlock)block;
 
 /**
  Stores an object in the cache for the specified key. This method returns immediately and executes the
@@ -138,7 +138,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key A key to associate with the object. This string will be copied.
  @param block A block to be executed concurrently after the object has been stored, or nil.
  */
-- (void)setObject:(id <NSCoding>)object forKey:(NSString *)key block:(nullable PINCacheObjectBlock)block;
+- (void)setObject:(nullable id <NSCoding>)object forKey:(NSString *)key block:(nullable PINCacheObjectBlock)block;
 
 /**
  Removes the object for the specified key. This method returns immediately and executes the passed
@@ -147,7 +147,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object to be removed.
  @param block A block to be executed concurrently after the object has been removed, or nil.
  */
-- (void)removeObjectForKey:(NSString *)key block:(nullable PINCacheObjectBlock)block;
+- (void)removeObjectForKey:(nullable NSString *)key block:(nullable PINCacheObjectBlock)block;
 
 /**
  Removes all objects from the cache that have not been used since the specified date. This method returns immediately and
@@ -156,7 +156,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param date Objects that haven't been accessed since this date are removed from the cache.
  @param block A block to be executed concurrently after the cache has been trimmed, or nil.
  */
-- (void)trimToDate:(NSDate *)date block:(nullable PINCacheBlock)block;
+- (void)trimToDate:(nullable NSDate *)date block:(nullable PINCacheBlock)block;
 
 /**
  Removes all objects from the cache.This method returns immediately and executes the passed block after the
@@ -176,7 +176,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @result YES if an object is present for the given key in the cache, otherwise NO.
  */
-- (BOOL)containsObjectForKey:(NSString *)key;
+- (BOOL)containsObjectForKey:(nullable NSString *)key;
 
 /**
  Retrieves the object for the specified key. This method blocks the calling thread until the object is available.
@@ -186,7 +186,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param key The key associated with the object.
  @result The object for the specified key.
  */
-- (__nullable id)objectForKey:(NSString *)key;
+- (__nullable id)objectForKey:(nullable NSString *)key;
 
 /**
  Stores an object in the cache for the specified key. This method blocks the calling thread until the object has been set.
@@ -196,7 +196,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  @param object An object to store in the cache.
  @param key A key to associate with the object. This string will be copied.
  */
-- (void)setObject:(id <NSCoding>)object forKey:(NSString *)key;
+- (void)setObject:(nullable id <NSCoding>)object forKey:(nullable NSString *)key;
 
 /**
  Removes the object for the specified key. This method blocks the calling thread until the object
@@ -205,7 +205,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  
  @param key The key associated with the object to be removed.
  */
-- (void)removeObjectForKey:(NSString *)key;
+- (void)removeObjectForKey:(nullable NSString *)key;
 
 /**
  Removes all objects from the cache that have not been used since the specified date.
@@ -214,7 +214,7 @@ typedef void (^PINCacheObjectContainmentBlock)(BOOL containsObject);
  
  @param date Objects that haven't been accessed since this date are removed from the cache.
  */
-- (void)trimToDate:(NSDate *)date;
+- (void)trimToDate:(nullable NSDate *)date;
 
 /**
  Removes all objects from the cache. This method blocks the calling thread until the cache has been cleared.
